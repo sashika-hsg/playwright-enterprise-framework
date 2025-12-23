@@ -1,0 +1,38 @@
+{
+  "name": "playwright-enterprise-framework",
+  "version": "1.0.0",
+  "description": "Architecture-first QA automation framework.",
+  "main": "bootstrap.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report",
+    "install:browsers": "playwright install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sashika-hsg/playwright-enterprise-framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sashika-hsg/playwright-enterprise-framework/issues"
+  },
+  "homepage": "https://github.com/sashika-hsg/playwright-enterprise-framework#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}
