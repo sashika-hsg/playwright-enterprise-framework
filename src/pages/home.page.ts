@@ -1,5 +1,5 @@
-import {expect, Locator, Page} from '@playwright/test';
-import {BasePage} from '@core/basePage';
+import {Locator, Page} from '@playwright/test';
+import {BasePage} from '@core/base.page';
 
 export class HomePage extends BasePage {
     private readonly signInButton: Locator;

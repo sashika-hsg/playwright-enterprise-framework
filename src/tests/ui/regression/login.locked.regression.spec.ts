@@ -1,13 +1,18 @@
-import{test, expect} from '@fixtures/testFixtures';
+import { test, expect } from "@fixtures/test.fixtures";
 
-test.describe('locked out login flow', () => {
-    test('@regression Locked account cannot login and sees appropriate error message',
-    async ({ loginFlow, loginPage }) => {
-        await loginFlow.attemptLogin(
-                process.env.LOCKED_USER_EMAIL!, process.env.LOCKED_USER_PASSWORD!);               
-        const isErrorVisible = await loginPage.isLoginErrorVisible();
-        expect(isErrorVisible).toBe(true);            
-        const errorText = await loginPage.getErrorMessageText();
-        expect(errorText).toContain('Invalid email or password');
-    });
+test.describe("Login – Regression", () => {
+  test("user can see error message for invalid credentials", 
+    async ({loginFlow,  }) => {
+        const lockedUserEmail = process.env.LOCKED_USER_EMAIL;
+        const lockedUserPassword = process.env.LOCKED_USER_PASSWORD;
+        if (!lockedUserEmail || !lockedUserPassword) {
+            throw new Error("LOCKED_USER_EMAIL or LOCKED_USER_PASSWORD is not set");
+        }
+        await loginFlow.login(lockedUserEmail,lockedUserPassword);
+        const isErrorVisible = await loginFlow.isLoginErrorVisible();
+        const errorText = await loginFlow.getLoginErrorText();
+
+    expect(await loginFlow.isLoginErrorVisible()).toBe(true);
+    expect(await loginFlow.getLoginErrorText()).toContain("Invalid email or password");
+  });
 });

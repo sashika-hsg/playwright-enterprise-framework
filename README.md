@@ -22,3 +22,9 @@ A framework structured to scale across enterprise applications and multiple team
   account or auth bypass is available.
 
 This is an intentional decision to keep CI reliable.
+
+### Negative Login Scenarios
+- Locked account validation
+- Error message assertion
+- Defensive handling of async UI states
+- Realistic submit behaviour verification

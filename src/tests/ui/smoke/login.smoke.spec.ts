@@ -1,21 +1,25 @@
-import{test, expect} from '@fixtures/testFixtures';
+import { test, expect } from "@fixtures/test.fixtures";
 
-// ⚠️ TEMPORARILY DISABLED
-// Login submission is disabled due to account lock / environment issue.
-// See README: Known Issues section.
-test.skip('@smoke User can login with valid credentials(blocked by account lock)',
-    async ({ loginFlow, page }) => {
-     await loginFlow.attemptLogin(
-            process.env.USER_EMAIL ?? 'customer@practicesoftwaretesting.com',
-            process.env.USER_PASSWORD ?? 'welcome01'
-        );
-        console.log('FINAL URL:', page.url());
+function requireEnv(name: string): string {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`${name} is not set`);
+  }
+  return value;
+}
 
-        // Verify successful login by checking for a specific element on the landing page
-        await expect(page).toHaveURL(/account|profile\dashboard/i);
-    });
+test.describe("Login – Smoke", () => {
 
-test('@smoke User can access login page',
-     async ({loginFlow, page }) => {
-    await loginFlow.loginPageIsVisible();
+  test("valid user is redirected to landing page after login", async ({ loginFlow, page }) => {
+    // Arrange
+    const email = requireEnv("VALID_USER_EMAIL");
+    const password = requireEnv("VALID_USER_PASSWORD");
+
+    // Act
+    await loginFlow.login(email, password);
+
+    // Assert — landing page navigation
+    await expect(page).toHaveURL(/account/i);
+  });
+
 });
