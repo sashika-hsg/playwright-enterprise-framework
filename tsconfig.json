@@ -8,16 +8,16 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "@config/*": ["src/config/*"],
-      "@core/*": ["src/core/*"],
-      "@pages/*": ["src/pages/*"],
-      "@flows/*": ["src/flows/*"],
-      "@data/*": ["src/data/*"],
-      "@adapters/*": ["src/adapters/*"],
-      "@utils/*": ["src/utils/*"],
-      "@fixtures/*": ["src/fixtures/*"]
+      "@config/*": ["config/*"],
+      "@core/*": ["core/*"],
+      "@pages/*": ["pages/*"],
+      "@flows/*": ["flows/*"],
+      "@data/*": ["data/*"],
+      "@adapters/*": ["adapters/*"],
+      "@utils/*": ["utils/*"],
+      "@fixtures/*": ["fixtures/*"]
     },
     "ignoreDeprecations": "6.0"
   },
