@@ -1,7 +1,7 @@
 import { test, expect } from "@fixtures/test.fixtures";
 
 test.describe("Login – Regression", () => {
-  test("user can see error message for invalid credentials", 
+  test("@smoke user can see error message for invalid credentials", 
     async ({loginFlow,  }) => {
         const lockedUserEmail = process.env.LOCKED_USER_EMAIL;
         const lockedUserPassword = process.env.LOCKED_USER_PASSWORD;

@@ -10,7 +10,7 @@ function requireEnv(name: string): string {
 
 test.describe("Login – Smoke", () => {
 
-  test("valid user is redirected to landing page after login", async ({ loginFlow, page }) => {
+  test("@smoke valid user is redirected to landing page after login", async ({ loginFlow, page }) => {
     // Arrange
     const email = requireEnv("VALID_USER_EMAIL");
     const password = requireEnv("VALID_USER_PASSWORD");
