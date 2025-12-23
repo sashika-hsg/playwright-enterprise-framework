@@ -9,7 +9,7 @@ jobs:
   smoke-tests:
     name: Run Smoke Tests
     runs-on: ubuntu-latest
-    environment: QA
+    environment: testing
 
     env:
       VALID_USER_EMAIL: ${{ secrets.VALID_USER_EMAIL }}
