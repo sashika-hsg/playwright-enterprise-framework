@@ -23,7 +23,7 @@ export abstract class BasePage {
 
     /**wait for page load */
     async waitForPageLoad(): Promise<void> {
-        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForLoadState('domcontentloaded');
     }
     
     /**Take a screenshot */
