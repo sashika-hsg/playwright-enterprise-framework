@@ -19,7 +19,6 @@
       "@utils/*": ["src/utils/*"],
       "@fixtures/*": ["src/fixtures/*"]
     },
-    "types": ["node"],
     "ignoreDeprecations": "6.0"
   },
   "include": ["src", "playwright.config.ts"]
