@@ -23,10 +23,12 @@ export class LoginFlow {
     
     //perform login
     await this.loginPage.navigateTo("/auth/login");
-    await this.loginPage.waitForPageLoad();
+    await this.loginPage.waitForLoginForm();
     await this.loginPage.enterEmail(email);
     await this.loginPage.enterPassword(password);
     await this.loginPage.submitLogin();
     await this.loginPage.waitForPageLoad();
   }
-}
+
+  }
+

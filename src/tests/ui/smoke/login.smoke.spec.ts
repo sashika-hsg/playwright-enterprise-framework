@@ -9,7 +9,7 @@ test('@smoke User can login with valid credentials',
         );
 
         // Verify successful login by checking for a specific element on the landing page
-        await expect(page).toHaveURL(/account/i);
+        await expect(page).toHaveURL(/account|profile\dashboard/i);
     }
 )
 

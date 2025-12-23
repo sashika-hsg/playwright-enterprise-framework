@@ -14,16 +14,18 @@ export class LoginPage extends BasePage {
     this.loginButton = page.locator('[data-test="login-submit"]');
   }
   async enterEmail(email: string): Promise<void> {
-    await expect(this.usernameInput).toBeVisible({ timeout: 10000 });
     await this.usernameInput.fill(email);
   }
 
   async enterPassword(password: string): Promise<void> {
-    await expect(this.passwordInput).toBeVisible({ timeout: 10000 });
     await this.passwordInput.fill(password);
   }
   async submitLogin(): Promise<void> {
-    await expect(this.loginButton).toBeVisible({ timeout: 10000 });
     await this.loginButton.click();
+  }
+  async waitForLoginForm(): Promise<void> {
+    await this.usernameInput.waitFor({ state: "visible" });
+    await this.passwordInput.waitFor({ state: "visible" });
+    await this.loginButton.waitFor({ state: "visible" });
   }
 }
