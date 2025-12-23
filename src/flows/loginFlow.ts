@@ -5,8 +5,10 @@ import { HomePage } from "@pages/homePage";
 export class LoginFlow {
   private readonly loginPage: LoginPage;
   private readonly homePage: HomePage;
+  private readonly page: Page;
 
   constructor(page: Page) {
+    this.page = page;
     this.loginPage = new LoginPage(page);
     this.homePage = new HomePage(page);
   }
@@ -23,6 +25,7 @@ export class LoginFlow {
     
     //perform login
     await this.loginPage.navigateTo("/auth/login");
+     await this.page.waitForURL('**/auth/login', { timeout: 15_000 });
     await this.loginPage.waitForLoginForm();
     await this.loginPage.enterEmail(email);
     await this.loginPage.enterPassword(password);
