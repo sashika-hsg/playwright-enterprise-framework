@@ -10,6 +10,12 @@ jobs:
     name: Run Smoke Tests
     runs-on: ubuntu-latest
 
+    env:
+      VALID_USER_EMAIL: ${{ secrets.VALID_USER_EMAIL }}
+      VALID_USER_PASSWORD: ${{ secrets.VALID_USER_PASSWORD }}
+      LOCKED_USER_EMAIL: ${{ secrets.LOCKED_USER_EMAIL }}
+      LOCKED_USER_PASSWORD: ${{ secrets.LOCKED_USER_PASSWORD }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
