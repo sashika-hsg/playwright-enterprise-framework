@@ -12,3 +12,13 @@ Stable execution practices (retries, traces, screenshots, video on failure)
 Suite strategy aligned to real delivery teams (Smoke vs Regression)
 CI/CD readiness with GitHub Actions (PR validation, artifact retention, failure diagnostics)
 A framework structured to scale across enterprise applications and multiple teams
+
+## Known Issues / Limitations
+
+- UI login submission is temporarily disabled in automation due to
+  account lockout behaviour on the demo site after repeated attempts.
+- Smoke tests validate login page accessibility only.
+- Full authentication flows will be re-enabled once a stable test
+  account or auth bypass is available.
+
+This is an intentional decision to keep CI reliable.
