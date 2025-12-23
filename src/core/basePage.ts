@@ -1,6 +1,10 @@
 import {Page, expect} from '@playwright/test';
 /**
- * BasePage class serves as a foundational class for all page objects in the Playwright Enterprise Framework.
+ * BasePage class serves as a foundational class for all 
+ * page objects in the Playwright Enterprise Framework.
+ * it does not contain business logic or selectors 
+ * but provides common functionalities that can be 
+ * utilized by derived page classes.
  */
 export abstract class BasePage {
     protected readonly page: Page;
@@ -19,7 +23,7 @@ export abstract class BasePage {
 
     /**wait for page load */
     async waitForPageLoad(): Promise<void> {
-        await this.page.waitForURL('networkidle');
+        await this.page.waitForLoadState('networkidle');
     }
     
     /**Take a screenshot */

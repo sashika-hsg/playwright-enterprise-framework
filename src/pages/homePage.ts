@@ -1,4 +1,4 @@
-import {Locator, Page} from '@playwright/test';
+import {expect, Locator, Page} from '@playwright/test';
 import {BasePage} from '@core/basePage';
 
 export class HomePage extends BasePage {
@@ -6,10 +6,11 @@ export class HomePage extends BasePage {
 
     constructor(page: Page) {
         super(page);
-        this.signInButton = page.getByTestId('nav-sign-in');
+        this.signInButton = page.locator('[data-test="nav-sign-in"]');
     }
     /**Click on sign in button */
     async clickSignIn():Promise<void>{
+        await expect(this.signInButton).toBeVisible({timeout: 10000});
         await this.signInButton.click();    
     } 
 } 

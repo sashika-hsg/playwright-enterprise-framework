@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 import { BasePage } from "@core/basePage";
 
 export class LoginPage extends BasePage {
@@ -9,18 +9,21 @@ export class LoginPage extends BasePage {
   constructor(page: Page) {
     super(page);
 
-    this.usernameInput = page.locator("#username");
-    this.passwordInput = page.locator("#password");
-    this.loginButton = page.locator('button[type="submit"]');
+    this.usernameInput = page.locator('[data-test="email"]');
+    this.passwordInput = page.locator('[data-test="password"]');
+    this.loginButton = page.locator('[data-test="login-submit"]');
   }
   async enterEmail(email: string): Promise<void> {
+    await expect(this.usernameInput).toBeVisible({ timeout: 10000 });
     await this.usernameInput.fill(email);
   }
 
   async enterPassword(password: string): Promise<void> {
+    await expect(this.passwordInput).toBeVisible({ timeout: 10000 });
     await this.passwordInput.fill(password);
   }
   async submitLogin(): Promise<void> {
+    await expect(this.loginButton).toBeVisible({ timeout: 10000 });
     await this.loginButton.click();
   }
 }
