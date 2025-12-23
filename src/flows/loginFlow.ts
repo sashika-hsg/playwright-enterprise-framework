@@ -19,19 +19,19 @@ export class LoginFlow {
    */
   async loginAsValidUser(email: string, password: string): Promise<void> {
     //open home page
-    await this.homePage.navigateTo("/");
-    await this.homePage.waitForPageLoad();
-    await this.homePage.clickSignIn();
-    
+    await this.loginPageIsVisible();
     //perform login
-    await this.loginPage.navigateTo("/auth/login");
-     await this.page.waitForURL('**/auth/login', { timeout: 15_000 });
-    await this.loginPage.waitForLoginForm();
     await this.loginPage.enterEmail(email);
     await this.loginPage.enterPassword(password);
     await this.loginPage.submitLogin();
     await this.loginPage.waitForPageLoad();
   }
 
+  async loginPageIsVisible(): Promise<void> {
+    await this.homePage.navigateTo("/");
+    await this.homePage.waitForPageLoad();
+    await this.homePage.clickSignIn();
+    await this.page.waitForURL("**/auth/login", { timeout: 15_000 });
+    await this.loginPage.waitForLoginForm();
   }
-
+}

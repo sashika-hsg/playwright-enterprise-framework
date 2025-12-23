@@ -24,7 +24,7 @@ export abstract class BasePage {
     /**wait for page load */
     async waitForPageLoad(): Promise<void> {
         await this.page.waitForLoadState('domcontentloaded');
-    }
+   }
     
     /**Take a screenshot */
     async takeScreenshot(name: string): Promise<void> {

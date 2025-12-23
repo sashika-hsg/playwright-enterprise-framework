@@ -10,7 +10,8 @@ export class HomePage extends BasePage {
     }
     /**Click on sign in button */
     async clickSignIn():Promise<void>{
-        await expect(this.signInButton).toBeVisible({timeout: 10000});
+        await this.signInButton.waitFor({ state: "visible" });
+        console.log(this.signInButton.textContent)
         await this.signInButton.click();    
     } 
 } 

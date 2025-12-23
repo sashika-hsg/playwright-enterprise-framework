@@ -12,6 +12,7 @@ export class LoginPage extends BasePage {
     this.usernameInput = page.locator('[data-test="email"]');
     this.passwordInput = page.locator('[data-test="password"]');
     this.loginButton = page.locator('[data-test="login-submit"]');
+   
   }
   async enterEmail(email: string): Promise<void> {
     await this.usernameInput.fill(email);
