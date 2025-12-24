@@ -4,7 +4,7 @@ dotenv.config();
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testDir: './src/tests',
+  testDir: './src',
 
   timeout: 30_000,
 
@@ -23,7 +23,7 @@ export default defineConfig({
   ],
 
   use: {
-    // 👇 THIS is where the application URL is defined
+
     baseURL: process.env.BASE_URL ?? 'https://practicesoftwaretesting.com',
     headless: true,
     trace: 'on-first-retry',
@@ -33,8 +33,15 @@ export default defineConfig({
 
   projects: [
     {
+      name:"setup",
+      testMatch: /.*\.setup\.ts/
+    },
+    {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup'],
+      use: { ...devices['Desktop Chrome'],
+        storageState: '.auth/customer01.json',
+       },
     },
     // {
     //   name: 'firefox',
