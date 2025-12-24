@@ -14,4 +14,11 @@ export class HomePage extends BasePage {
         console.log(this.signInButton.textContent)
         await this.signInButton.click();    
     } 
+    async navigate(): Promise<void> {
+        await this.page.goto('/');
+    }
+
+    async getHomeTitle(): Promise<string> {
+        return this.page.title();
+    }
 } 
